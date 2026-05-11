@@ -1,0 +1,24 @@
+export FUCHSIA_SRCDIR=~/fuchsia
+export OUT_DIR="$FUCHSIA_SRCDIR/out/default"
+
+cd $OUT_DIR
+grep -F "format.u_format_s3tc.c.o" compile_commands.json
+
+
+Obtengo el path entre -c y -o
+
+Le doy en:
+
+realpath "fidling/gen/sdk/fidl/fuchsia.hardware.acpi/fuchsia.hardware.acpi/cpp/fidl/fuchsia.hardware.acpi/cpp/natural_types.cc"
+
+
+Si quiere verificar antes que el archivo exista utilizo ls en lugar de realpath
+
+Nota: Si el path entre -c y -o tiene cosas como "../../", lo que vamos a hacer es parados en $OUT_DIR, nos vamos cuantas ../ hay en el path:
+
+Ejemplo
+
+cd ../../
+
+Y ahí sí le damos en 
+realpath 
